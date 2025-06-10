@@ -1,16 +1,41 @@
-# This is a sample Python script.
+import random
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# Set a range for the random number
+lower_bound = 1
+upper_bound = 100
 
+# Generate a random number
+secret_number = random.randint(lower_bound, upper_bound)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+print("Welcome to 'Guess the Number'!")
+print(f"I'm thinking of a number between {lower_bound} and {upper_bound}.")
 
+# Initialize guess variable
+guess = None
+attempts = 0
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Loop until the player guesses correctly
+while guess != secret_number:
+    # Take user input and convert to integer
+    guess_input = input("Enter your guess: ")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # String manipulation: remove whitespace
+    guess_input = guess_input.strip()
+
+    # Check if input is a valid number
+    if not guess_input.isdigit():
+        print("Please enter a valid number.")
+        continue
+
+    # Convert to integer
+    guess = int(guess_input)
+    attempts += 1
+
+    # Use conditions to give feedback
+    if guess < secret_number:
+        print("Too low! Try again.")
+    elif guess > secret_number:
+        print("Too high! Try again.")
+    else:
+        print(f"Congratulations! You guessed the number {secret_number} in {attempts} attempts.")
+
