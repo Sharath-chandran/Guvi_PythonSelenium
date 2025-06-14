@@ -1,40 +1,39 @@
+# Random is variable generator used for selecting random words
+# To generate a random number for the game.
 import random
 
 # Selecting the range between 1 to 100
-Lower_Value = 1
-Upper_Value = 100
+Start_range = 1
+End_range = 100
 
-# Generating a random number
-Secret_Number = random.randint(Lower_Value, Upper_Value)
+# Generates a secret random number between Start and End range
+Number_Guess = random.randint(Start_range, End_range)
 
-print(f"Choose a number between {Lower_Value} and {Upper_Value}.")
+print(f"Select any number between {Start_range} and {End_range}.")
 
 # Initialize guess variable
 guess = None
 attempts = 0
 
-# Loop executes until we guess the number correctly
-while guess != Secret_Number:
-    # User input
+# While loop keeps running until the player guess the number
+while guess != Number_Guess:
+    # Player input
     guess_input = input("Enter the number that you are guessing: ")
 
-    # String manipulation: remove whitespace
-    # guess_input = guess_input.strip()
-
-    # Checking the input whether it is a valid number
+# Ensures the player enters a digits
+# Checking the input whether it is a valid number
     if not guess_input.isdigit():
-        print("Please enter a valid number.")
+        print("Please enter a valid number: ")
         continue
-
-    # Convert to integer
+# Converts the valid string input to an integer
     guess = int(guess_input)
     attempts += 1
 
-    # Use conditions to give feedback
-    if guess < Secret_Number:
+# Compares the player's guess to make sure low or high or correct
+    if guess < Number_Guess:
         print("Too low! Try again.")
-    elif guess > Secret_Number:
+    elif guess > Number_Guess:
         print("Too high! Try again.")
     else:
-        print(f"Congratulations! You guessed the number {Secret_Number} in {attempts} attempts.")
+        print(f"Congratulations! You guessed the number {Number_Guess} in {attempts} attempts.")
 
